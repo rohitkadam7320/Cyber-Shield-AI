@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CyberShield AI - Register</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <h1>🛡 CyberShield AI</h1>
+    <h2>Register</h2>
+
+    <input
+        id="name"
+        type="text"
+        placeholder="Name"
+    >
+
+    <input
+        id="email"
+        type="email"
+        placeholder="Email"
+    >
+
+    <input
+        id="password"
+        type="password"
+        placeholder="Password"
+    >
+
+    <button id="registerBtn" type="button">
+        Create Account
+    </button>
+
+    <p id="msg"></p>
+
+</div>
+
+<script>
+
+document.getElementById("registerBtn").addEventListener("click", async function () {
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    const msg = document.getElementById("msg");
+
+    // Check fields
+    if (name === "" || email === "" || password === "") {
+        msg.innerText = "Please fill all fields";
+        return;
+    }
+
+    msg.innerText = "Creating account...";
+
+    try {
+
+        const response = await fetch("/api/auth/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                password: password
+            })
+        });
+
+        const data = await response.json();
+
+        console.log(data);
+
+        if (data.success) {
+
+            msg.innerText = "Registration successful!";
+
+            setTimeout(function () {
+                window.location.href = "/login.html";
+            }, 1000);
+
+        } else {
+
+            msg.innerText = data.message || "Registration failed";
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+        msg.innerText = "Server connection error";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>

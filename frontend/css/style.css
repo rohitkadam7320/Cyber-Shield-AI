@@ -1,0 +1,390 @@
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#07111f;color:#fff}
+nav{padding:20px 7%;background:#0c1b2e;display:flex;justify-content:space-between}
+nav a{color:#fff;margin:0 10px;text-decoration:none}
+.hero{text-align:center;padding:100px 20px}
+.hero h1{font-size:55px}
+.btn,button{background:#00bcd4;color:white;border:0;border-radius:8px;padding:13px 25px;text-decoration:none;cursor:pointer}
+.features,.stats{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;padding:30px}
+.card,.stat-card,.scan-item,.form-container{background:#10243a;border-radius:15px;padding:25px}
+.card,.stat-card{min-width:220px;text-align:center}
+.form-container{width:350px;max-width:90%;margin:100px auto}
+input{width:100%;padding:14px;margin:10px 0;border:0;border-radius:8px}
+.form-container button{width:100%}
+.dashboard{padding:40px 7%}
+.scan-item{margin:10px 0}
+/* ================================
+   CYBERSHIELD AI - TECH UI
+   Animated Cyber Security Theme
+================================ */
+
+/* Main background */
+body {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0, 255, 200, 0.08), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(0, 120, 255, 0.08), transparent 30%),
+        #050912;
+    color: #e8faff;
+    font-family: "Segoe UI", Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Animated background grid */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 255, 200, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 200, 0.035) 1px, transparent 1px);
+    background-size: 45px 45px;
+    animation: gridMove 12s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes gridMove {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(45px);
+    }
+}
+
+
+/* ================================
+   HEADINGS
+================================ */
+
+h1,
+h2,
+h3 {
+    letter-spacing: 1px;
+    text-shadow:
+        0 0 5px rgba(0, 255, 200, 0.5),
+        0 0 15px rgba(0, 255, 200, 0.25);
+}
+
+h2 {
+    position: relative;
+}
+
+
+/* ================================
+   CYBER CARDS
+================================ */
+
+.url-checker,
+.phishing-checker,
+.risk-score {
+    position: relative;
+    overflow: hidden;
+
+    background: rgba(8, 18, 30, 0.82);
+    border: 1px solid rgba(0, 255, 200, 0.25);
+    border-radius: 18px;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 0 15px rgba(0, 255, 200, 0.08),
+        inset 0 0 25px rgba(0, 255, 200, 0.025);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+
+    animation: cardAppear 0.8s ease both;
+}
+
+
+/* Hover animation */
+
+.url-checker:hover,
+.phishing-checker:hover,
+.risk-score:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(0, 255, 200, 0.7);
+
+    box-shadow:
+        0 0 20px rgba(0, 255, 200, 0.18),
+        0 0 50px rgba(0, 140, 255, 0.08),
+        inset 0 0 25px rgba(0, 255, 200, 0.04);
+}
+
+
+/* Card entrance */
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* ================================
+   MOVING LIGHT EFFECT
+================================ */
+
+.url-checker::before,
+.phishing-checker::before,
+.risk-score::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #00ffc8,
+        transparent
+    );
+
+    animation: scanLine 4s linear infinite;
+}
+
+@keyframes scanLine {
+    0% {
+        left: -120%;
+    }
+
+    100% {
+        left: 120%;
+    }
+}
+
+
+/* ================================
+   INPUT BOX
+================================ */
+
+.url-checker input,
+.phishing-checker input,
+.risk-score input {
+    background: rgba(0, 0, 0, 0.45);
+
+    color: #ffffff;
+
+    border: 1px solid rgba(0, 255, 200, 0.3);
+
+    outline: none;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* Input focus */
+
+.url-checker input:focus,
+.phishing-checker input:focus,
+.risk-score input:focus {
+    border-color: #00ffc8;
+
+    box-shadow:
+        0 0 8px rgba(0, 255, 200, 0.35),
+        0 0 25px rgba(0, 255, 200, 0.12);
+
+    transform: scale(1.02);
+}
+
+
+/* Placeholder */
+
+input::placeholder {
+    color: #7d929d;
+}
+
+
+/* ================================
+   CYBER BUTTON
+================================ */
+
+.url-checker button,
+.phishing-checker button,
+.risk-score button {
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+        90deg,
+        #00b894,
+        #00cec9
+    );
+
+    color: #001411;
+
+    font-weight: 700;
+
+    border: none;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* Button hover */
+
+.url-checker button:hover,
+.phishing-checker button:hover,
+.risk-score button:hover {
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow:
+        0 0 10px rgba(0, 255, 200, 0.5),
+        0 0 30px rgba(0, 255, 200, 0.2);
+}
+
+
+/* Button click */
+
+.url-checker button:active,
+.phishing-checker button:active,
+.risk-score button:active {
+    transform: scale(0.96);
+}
+
+
+/* Button light sweep */
+
+.url-checker button::before,
+.phishing-checker button::before,
+.risk-score button::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: -100%;
+
+    width: 50%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.45),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    transition: 0.5s;
+}
+
+.url-checker button:hover::before,
+.phishing-checker button:hover::before,
+.risk-score button:hover::before {
+    left: 130%;
+}
+
+
+/* ================================
+   RESULT ANIMATION
+================================ */
+
+#urlResult,
+#phishingResult,
+#riskResult {
+    animation: resultGlow 1.2s ease infinite alternate;
+}
+
+@keyframes resultGlow {
+    from {
+        text-shadow: 0 0 3px rgba(0, 255, 200, 0.2);
+    }
+
+    to {
+        text-shadow:
+            0 0 8px rgba(0, 255, 200, 0.5),
+            0 0 18px rgba(0, 255, 200, 0.2);
+    }
+}
+
+
+/* ================================
+   SCAN EFFECT
+================================ */
+
+@keyframes cyberPulse {
+    0% {
+        box-shadow: 0 0 5px rgba(0,255,200,0.2);
+    }
+
+    50% {
+        box-shadow:
+            0 0 25px rgba(0,255,200,0.35),
+            0 0 50px rgba(0,140,255,0.1);
+    }
+
+    100% {
+        box-shadow: 0 0 5px rgba(0,255,200,0.2);
+    }
+}
+
+
+/* ================================
+   SCROLLBAR
+================================ */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #03070d;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00b894;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00ffc8;
+}
+
+
+/* ================================
+   MOBILE RESPONSIVE
+================================ */
+
+@media (max-width: 600px) {
+
+    .url-checker,
+    .phishing-checker,
+    .risk-score {
+        margin: 25px 15px;
+        padding: 22px;
+    }
+
+    .url-checker input,
+    .phishing-checker input,
+    .risk-score input {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+
+    .url-checker button,
+    .phishing-checker button,
+    .risk-score button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}

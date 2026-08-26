@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head><title>Dashboard</title><link rel="stylesheet" href="/css/style.css"></head>
+<body>
+<nav><h2>🛡 CyberShield AI</h2><a href="/">Home</a></nav>
+<main class="dashboard">
+<h1>Security Dashboard</h1>
+<div class="stats">
+<div class="stat-card">Total Scans<h2 id="total">0</h2></div>
+<div class="stat-card">Threats<h2 id="threats">0</h2></div>
+<div class="stat-card">Safe<h2 id="safe">0</h2></div>
+</div>
+<h2>Scan URL</h2>
+<input id="url" placeholder="https://example.com">
+<button onclick="scan()">Scan URL</button>
+<p id="result"></p>
+<h2>Recent Scans</h2><div id="history"></div>
+</main>
+<script>
+const user = JSON.parse(localStorage.user || 'null');
+if(!user) location='/login.html';
+
+async function load() {
+    const r = await fetch('/api/dashboard/stats/' + user.id);
+    const d = await r.json();
+    total.innerText = d.total_scans;
+    threats.innerText = d.threats;
+    safe.innerText = d.safe;
+    history.innerHTML = d.recent_scans.map(
+        s => '<div class="scan-item"><b>' + s.input_value +
+             '</b><br>' + s.threat_level + ' — ' + s.risk_score + '%</div>'
+    ).join('');
+}
+
+async function scan() {
+    const r = await fetch('/api/scanner/scan-url', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({url:url.value,user_id:user.id})
+    });
+    const d = await r.json();
+    result.innerText = d.result || d.message;
+    if(d.risk_score !== undefined) result.innerText += ' — Risk ' + d.risk_score + '%';
+    load();
+}
+load();
+</script>
+</body>
+</html>

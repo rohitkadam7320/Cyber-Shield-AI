@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head><title>Login</title><link rel="stylesheet" href="/css/style.css"></head>
+<body>
+<div class="form-container"><h1>🛡 CyberShield AI</h1><h2>Login</h2>
+<input id="email" type="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
+<button onclick="login()">Login</button><p id="msg"></p></div>
+<script>
+async function login() {
+    const r = await fetch('/api/auth/login', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({email:email.value,password:password.value})
+    });
+    const d = await r.json();
+    msg.innerText = d.message;
+    if(d.success) {
+        localStorage.user = JSON.stringify(d.user);
+        location = '/dashboard.html';
+    }
+}
+</script>
+</body>
+</html>
